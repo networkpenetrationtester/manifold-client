@@ -1,8 +1,8 @@
 const fs = require('fs');
-const manifest = require('./dist/manifest.json');
+const manifest = require('./src/manifest.json');
 const npmPackage = require('./package.json');
 
-const injector = fs.readFileSync('./dist/js/manifoldClientInjector.js', { encoding: 'utf-8' });
+const injector = fs.readFileSync('./src/inject/manifoldClientInjector.js', { encoding: 'utf-8' });
 
 const content = `// ==UserScript==
 // @name         Manifold Client - Bonk.io
@@ -22,4 +22,4 @@ const content = `// ==UserScript==
 
 ${injector}`;
 
-fs.writeFileSync(`./web-ext-artifacts/manifold-client-${npmPackage.version}.user.js`, content);
+fs.writeFileSync(`./manifold-client-${npmPackage.version}.user.js`, content);
